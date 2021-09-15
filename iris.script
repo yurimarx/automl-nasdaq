@@ -9,8 +9,10 @@
     ;do ##class(%DeepSee.Utils).%BuildCube("CovidCube")
     ;zpm "install samples-bi"
     zpm "install csvgen"
-    ;set file="https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/11-14-2020.csv"
-    ;zw ##class(community.csvgen).GenerateFromURL(file,",","dc.irisbi.covid19")
+    set file="/opt/csv/nasdaq.csv"
+    zw ##class(community.csvgen).Generate(file,";","dc.automl.nasdaq")
+    w "Records: "_recordscount
+    
     ;zw ##class(%DeepSee.WizardUtils).%GenerateCubeDefinition("dc.irisbi.covid19","CovidCube","dc.irisbi.covid19cube",1)
 
 

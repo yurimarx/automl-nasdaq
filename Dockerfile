@@ -14,6 +14,11 @@ COPY src src
 COPY dsw dsw
 COPY  module.xml .  
 COPY iris.script /tmp/iris.script
+ADD https://ymservices.tech/isc/NASDAQ_100_Data_From_2010.csv /opt/csv/nasdaq.csv
+USER root
+RUN chmod 0777 -R /opt/csv/
+USER ${ISC_PACKAGE_MGRUSER}
+
 
 # run iris and script
 RUN iris start IRIS \
